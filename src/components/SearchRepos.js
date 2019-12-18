@@ -44,7 +44,6 @@ class SearchUser extends Component {
         >
           buscar
         </button>
-
         {Object.entries(repos).length === 0 ? (
           <div>
             <h3>no hay repos </h3>
