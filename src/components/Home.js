@@ -1,48 +1,20 @@
 import React, { Component } from "react";
-import SearchUser from "./SearchUser";
-import SearchRepos from "./SearchRepos";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-class Home extends Component {
-  componentDidMount() {
-    // this.props.requestApiData();
-  }
-  componentDidUpdate() {}
-
+import { Home } from "../styled/Components";
+class HomeComponent extends Component {
   render() {
     return (
-      // <div>
-      //   <p>Home component </p>
-      //   <SearchUser />
-      //   <SearchRepos />
-      // </div>
-
-      <Router>
+      <Home>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/SearchUser">SearchUser</Link>
-            </li>
-            <li>
-              <Link to="/SearchRepos">SearchRepos</Link>
-            </li>
-          </ul>
-
-          <hr />
-          <Switch>
-            <Route exact path="/SearchUser">
-              <SearchUser />
-            </Route>
-            <Route path="/SearchRepos">
-              <SearchRepos />
-            </Route>
-          </Switch>
+          <p>
+            Develop an application that uses the Github API for searching users
+            and repositories. The application must have 2 routes: user search
+            and repositories search with the corresponding navigation. These
+            routes must have a search bar and the search results must appear on
+            the same page.
+          </p>
         </div>
-      </Router>
+      </Home>
     );
   }
 }
-
-export default Home;
+export default HomeComponent;

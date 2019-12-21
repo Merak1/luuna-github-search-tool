@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestRepo } from "../actions";
+import { RepoFolder, Input, Button } from "../styled/Components";
 
 class SearchUser extends Component {
   state = {
@@ -34,16 +35,15 @@ class SearchUser extends Component {
   render() {
     const repos = this.props.repos;
     return (
-      <div>
-        <p>Search Repo</p>
-        <input onChange={this.Value} type="text" />
-        <button
+      <RepoFolder>
+        <Input onChange={this.Value} type="text" />
+        <Button
           onClick={() => {
             this.props.requestRepo(this.state.input);
           }}
         >
           buscar
-        </button>
+        </Button>
         {Object.entries(repos).length === 0 ? (
           <div>
             <h3>no hay repos </h3>
@@ -51,7 +51,7 @@ class SearchUser extends Component {
         ) : (
           <div className="test-repo">{repos.map(this.repo)}</div>
         )}
-      </div>
+      </RepoFolder>
     );
   }
 }
@@ -60,7 +60,4 @@ const mapStateToProps = state => ({ repos: state.repo });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ requestRepo }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchUser);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchUser);

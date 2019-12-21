@@ -3,7 +3,9 @@ import axios from "axios";
 import {
   REQUEST_USER,
   REQUEST_REPO,
+  REQUEST_USER_FOLLOWERS,
   receiveUser,
+  receiveUserFollowers,
   receiveRepo
 } from "./actions";
 
@@ -39,8 +41,27 @@ function* getGithubRepoData(action) {
     console.log("catch from saga", e);
   }
 }
+function* getUserFollowers(action) {
+  try {
+    const User = action.payload;
+    const getFollowers = async () => {
+      const res = await axios.get(
+        `https://api.github.com/users/${User}/followers`
+      );
+      const data = await res.data;
+      // console.log(data, "DAATA");
+      return data;
+    };
+    const data = yield call(getFollowers);
+    yield put(receiveUserFollowers(data));
+  } catch (e) {
+    console.log("catch from saga", e);
+  }
+}
 
 export default function* mySaga() {
   yield takeLatest(REQUEST_USER, getGithubUserData);
+  yield takeLatest(REQUEST_USER_FOLLOWERS, getUserFollowers);
+
   yield takeLatest(REQUEST_REPO, getGithubRepoData);
 }

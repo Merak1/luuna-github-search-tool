@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import "./App.css";
+import GlobalStyle from "./styled/GlobalStyle.js";
 
 import store from "./store";
-import Home from "./components/Home";
+import Main from "./components/Main";
 
 export default () => (
   <Provider store={store}>
-    <Home />
+    <GlobalStyle />
+    <Main />
   </Provider>
 );
