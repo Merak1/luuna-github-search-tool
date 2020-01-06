@@ -6,5 +6,5 @@ export default styled(Link)`
   text-decoration: none;
   padding: 1em 1.2em;
   with: 3em;
-  background-color: ${props => props.backgroundcolor};
+  font-size: 2rm;
 `;

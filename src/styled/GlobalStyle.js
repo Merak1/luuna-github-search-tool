@@ -8,7 +8,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Rubik';
     
 }
-
+a {
+    text-decoration:none;
+}
+li {
+    list-style: none;
+}
+div{
+    padding:0.5em 1em ;
+}
+*:focus {
+    outline: none;
+}
 
 `;
 export default GlobalStyle;

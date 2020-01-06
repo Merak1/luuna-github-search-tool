@@ -12,6 +12,8 @@ class HomeComponent extends Component {
             routes must have a search bar and the search results must appear on
             the same page.
           </p>
+
+          <p>🐋</p>
         </div>
       </Home>
     );

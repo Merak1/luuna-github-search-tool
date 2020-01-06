@@ -3,17 +3,14 @@ import axios from "axios";
 import {
   REQUEST_USER,
   REQUEST_REPO,
-  REQUEST_USER_FOLLOWERS,
   receiveUser,
-  receiveUserFollowers,
   receiveRepo
 } from "./actions";
 
-function* getGithubUserData(action) {
+function* getGithubUserData({ payload }) {
   try {
-    const user = action.payload;
     const getUser = async () => {
-      const res = await axios.get(`https://api.github.com/users/${user}`);
+      const res = await axios.get(`https://api.github.com/users/${payload}`);
       const data = await res.data;
       return data;
     };
@@ -23,15 +20,13 @@ function* getGithubUserData(action) {
     console.log("catch from saga", e);
   }
 }
-function* getGithubRepoData(action) {
+function* getGithubRepoData({ payload }) {
   try {
-    const repo = action.payload;
     const getRepo = async () => {
       const res = await axios.get(
-        `https://api.github.com/search/repositories?q=${repo}+language:all&sort=stars&order=desc`
+        `https://api.github.com/search/repositories?q=${payload}+language:all&sort=stars&order=desc&page=1&per_page=10`
       );
-      //? con la opción de buscar por lenguaje
-      //?  const res = await axios.get(`https://api.github.com/search/repositories?q=${repo}+language:javascript&sort=stars&order=desc`);
+      console.log(res);
       const data = await res.data.items;
       return data;
     };
@@ -41,27 +36,8 @@ function* getGithubRepoData(action) {
     console.log("catch from saga", e);
   }
 }
-function* getUserFollowers(action) {
-  try {
-    const User = action.payload;
-    const getFollowers = async () => {
-      const res = await axios.get(
-        `https://api.github.com/users/${User}/followers`
-      );
-      const data = await res.data;
-      // console.log(data, "DAATA");
-      return data;
-    };
-    const data = yield call(getFollowers);
-    yield put(receiveUserFollowers(data));
-  } catch (e) {
-    console.log("catch from saga", e);
-  }
-}
 
 export default function* mySaga() {
   yield takeLatest(REQUEST_USER, getGithubUserData);
-  yield takeLatest(REQUEST_USER_FOLLOWERS, getUserFollowers);
-
   yield takeLatest(REQUEST_REPO, getGithubRepoData);
 }

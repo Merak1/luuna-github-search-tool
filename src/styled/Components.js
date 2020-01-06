@@ -9,46 +9,44 @@ export const MenuUl = styled.ul`
   display: flex;
   justify-content: space-between;
   text-decoration: none;
-  padding: 1em;
   padding-bottom: 0;
   margin: 0;
 `;
 export const UlContainer = styled.div``;
-export const IlContainer = styled.div`
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0 100%);
-`;
 export const Home = styled.div`
-  background-color: #91b2ef82;
   height: 100%;
 `;
 export const User = styled.div`
-  background-color: #f9f195;
-  height: 100%;
+  display: flex;
 `;
 export const UserFolder = styled.div`
-  background-color: #f9f195;
-  display: flex;
-  justify-content: space-evenly;
+  margin-top: 0 !important;
   height: 100%;
 `;
 export const RepoFolder = styled.div`
-  background-color: #f9f195;
+  margin-top: 0 !important;
   height: 100%;
+`;
+export const Repo = styled.div`
+  height: 100%;
+  padding: 1em 2em;
+  border-top: 1px solid;
 `;
 export const UserImage = styled.img`
   width: 150px;
   border: 1px solid #ccc;
   padding: 5px;
 `;
-
 export const Input = styled.input`
   margin: 1em;
-  border: 1px;
+  border: 1px solid gray;
   border-radius: 10px;
+  border-radius: 5px;
 `;
 export const Button = styled.button`
   margin: 1em;
   border: 1px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 1em;
+  padding: 5px;
 `;
