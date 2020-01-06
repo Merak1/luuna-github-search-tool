@@ -1,7 +1,8 @@
 ## Github user/repo search tool
 
-Under construction
+Small aplication that uses the GithubAPI tp male calls searching for both users and repositories.
 
-![alt text](https://i.imgur.com/BQfDaEw.jpg " you wish")
+The aplication uses React, React-Router, Redux-saga, Axios and Styed Components (although it's my first time using it)
+
 
 🐋 - 🐳 - 🐋 - 🐳 - 🐋 - 🐳
